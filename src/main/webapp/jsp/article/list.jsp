@@ -14,6 +14,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div>
+		<h3>a 태그 사용법</h3>
+		<div><a href="<%= request.getContextPath() %>/home/main">메인</a></div>
+		<div><a href="../home/main">메인2</a></div>
+	</div>
+
 	<div>게시물 리스트 v1</div>
 	<ul>
 		<li><%= articleListMap.get(0).get("id") %> | <%= articleListMap.get(0).get("updateDate") %> | <%= articleListMap.get(0).get("title") %></li>
