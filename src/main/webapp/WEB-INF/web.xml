@@ -19,4 +19,34 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>DBConnectTestServlet</display-name>
+    <servlet-name>DBConnectTestServlet</servlet-name>
+    <servlet-class>com.koreaIT.jsp.am.DBConnectTestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DBConnectTestServlet</servlet-name>
+    <url-pattern>/DBConnectTestServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ArticleDetail</display-name>
+    <servlet-name>ArticleDetail</servlet-name>
+    <servlet-class>com.koreaIT.jsp.am.ArticleDetail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ArticleDetail</servlet-name>
+    <url-pattern>/ArticleDetail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>printDan</display-name>
+    <servlet-name>printDan</servlet-name>
+    <servlet-class>com.koreaIT.jsp.am.printDan</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>printDan</servlet-name>
+    <url-pattern>/printDan</url-pattern>
+  </servlet-mapping>
 </web-app>
