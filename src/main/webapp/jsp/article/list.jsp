@@ -18,14 +18,28 @@
 		<div><a href="<%= request.getContextPath() %>/home/main">메인</a></div>
 	</div>
 
-	<ul>
+	<table border=1>
+		<colgroup>
+			<col />
+			<col width="200"/>
+			<col />
+		</colgroup>
+		<tr>
+			<th>번호</th>
+			<th>작성일</th>
+			<th>제목</th>
+		</tr>
 		<% 
 		for (Map<String, Object> articleMap : articleListMap) {
 		%>
-			<li><%= articleMap.get("id") %> | <%= articleMap.get("updateDate") %> | <a href="detail?id=<%= articleMap.get("id") %>"><%= articleMap.get("title") %></a></li>
+			<tr>
+				<td><%= articleMap.get("id") %></td>
+				<td><%= articleMap.get("updateDate") %></td>
+				<td><a href="detail?id=<%= articleMap.get("id") %>"><%= articleMap.get("title") %></a></td>
+			</tr>
 		<%
 		}
 		%>
-	</ul>
+	</table>
 </body>
 </html>
