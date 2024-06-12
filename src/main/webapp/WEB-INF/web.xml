@@ -39,4 +39,24 @@
     <servlet-name>Test</servlet-name>
     <url-pattern>/Test</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ArticleDtailServlet</display-name>
+    <servlet-name>ArticleDtailServlet</servlet-name>
+    <servlet-class>com.koreaIT.jsp.am.ArticleDtailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ArticleDtailServlet</servlet-name>
+    <url-pattern>/ArticleDtailServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ArticleDelete</display-name>
+    <servlet-name>ArticleDelete</servlet-name>
+    <servlet-class>com.koreaIT.jsp.am.ArticleDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ArticleDelete</servlet-name>
+    <url-pattern>/ArticleDelete</url-pattern>
+  </servlet-mapping>
 </web-app>
