@@ -5,6 +5,8 @@
     
 <%
 	List<Map<String, Object>> articleListMap = (List<Map<String, Object>>) request.getAttribute("articleListMap");
+	int totalPageCnt = (int) request.getAttribute("totalPageCnt");
+	int cPage = (int) request.getAttribute("cPage");
 %>
 
 <!DOCTYPE html>
@@ -41,5 +43,22 @@
 		}
 		%>
 	</table>
+	
+	<style type="text/css">
+		.red {
+			color: red;
+			font-size: 1.5rem;
+		}
+	</style>
+	
+	<div>
+		<% 
+		for (int i = 1; i <= totalPageCnt; i++) {
+		%>
+			<a class="<%= cPage == i ? "red" : "" %>" href="?page=<%= i %>"><%= i %></a>
+		<%
+		}
+		%>
+	</div>
 </body>
 </html>
