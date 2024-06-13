@@ -89,4 +89,24 @@
     <servlet-name>ArticleWriteServlet</servlet-name>
     <url-pattern>/ArticleWriteServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ArticleDoModifyServlet</display-name>
+    <servlet-name>ArticleDoModifyServlet</servlet-name>
+    <servlet-class>com.koreaIT.jsp.am.ArticleDoModifyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ArticleDoModifyServlet</servlet-name>
+    <url-pattern>/ArticleDoModifyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ArticleModifyServlet</display-name>
+    <servlet-name>ArticleModifyServlet</servlet-name>
+    <servlet-class>com.koreaIT.jsp.am.ArticleModifyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ArticleModifyServlet</servlet-name>
+    <url-pattern>/ArticleModifyServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
