@@ -41,6 +41,9 @@ public class ArticleListServlet extends HttpServlet {
 			
 			int limitFrom = (cPage - 1) * itemsInAPage;
 			
+			int from = ((cPage - 1) / itemsInAPage) * 10 + 1;
+			int end =  (((cPage - 1) / itemsInAPage) + 1) * 10;
+			
 			SecSql sql = new SecSql();
 			sql.append("SELECT COUNT(id) FROM article");
 			
@@ -56,6 +59,8 @@ public class ArticleListServlet extends HttpServlet {
 			List<Map<String, Object>> articleListMap = DBUtil.selectRows(connection, sql);
 			
 			request.setAttribute("cPage", cPage);
+			request.setAttribute("from", from);
+			request.setAttribute("end", end);
 			request.setAttribute("totalPageCnt", totalPageCnt);
 			request.setAttribute("articleListMap", articleListMap);
 			
