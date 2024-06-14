@@ -11,6 +11,7 @@
 	
 	<div>
 		<div><a href="../article/list">게시물 리스트</a></div>
+		<div><a href="../member/join">회원가입</a></div>
 	</div>
 </body>
 </html>

@@ -109,4 +109,14 @@
     <servlet-name>ArticleModifyServlet</servlet-name>
     <url-pattern>/ArticleModifyServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MemberLogin</display-name>
+    <servlet-name>MemberLogin</servlet-name>
+    <servlet-class>com.koreaIT.jsp.am.MemberLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberLogin</servlet-name>
+    <url-pattern>/MemberLogin</url-pattern>
+  </servlet-mapping>
 </web-app>
