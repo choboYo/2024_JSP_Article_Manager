@@ -31,7 +31,6 @@ public class MemberDoJoinServlet extends HttpServlet {
 			
 			String loginId = request.getParameter("loginId");
 			String loginPw = request.getParameter("loginPw");
-			String loginPwChk = request.getParameter("loginPwChk");
 			String name = request.getParameter("name");
 			
 			SecSql sql = new SecSql();
