@@ -9,7 +9,6 @@ import java.util.Map;
 import com.koreaIT.jsp.am.config.Config;
 import com.koreaIT.jsp.am.util.DBUtil;
 import com.koreaIT.jsp.am.util.SecSql;
-import com.mysql.cj.Session;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -32,38 +31,30 @@ public class MemberDoLoginServlet extends HttpServlet {
 			Class.forName(Config.getDBDriverName());
 			connection = DriverManager.getConnection(Config.getDBUrl(), Config.getDBUsr(), Config.getDBPW());
 			
+			String loginId = request.getParameter("loginId");
+			String loginPw = request.getParameter("loginPw");
 			
 			SecSql sql = new SecSql();
 			sql.append("SELECT * FROM `member`");
+			sql.append("WHERE loginId = ?", loginId);
 			
 			Map<String, Object> memberMap = DBUtil.selectRow(connection, sql);
 			
+			if (memberMap.isEmpty()) {
+				response.getWriter().append(String.format("<script>alert('[ %s ]은(는) 존재하지 않는 아이디입니다'); location.replace('login');</script>", loginId));
+				return;
+			}
+			
+			if (memberMap.get("loginPw").equals(loginPw) == false) {
+				response.getWriter().append("<script>alert('비밀번호가 일치하지 않습니다'); location.replace('login');</script>");
+				return;
+			}
 			
 			HttpSession session = request.getSession();
-			for(Member member : memberMap) {
-			if(memberMap.get("loginId") != request.getParameter("loginId")) {
-				response.getWriter().append(String.format("%s은(는) 없는 아이디 입니다.", memberMap.get("loginId")));
-				return;
-				} 
-			}
+			session.setAttribute("loginedMemberId", memberMap.get("id"));
+			session.setAttribute("loginedMemberLoginId", memberMap.get("loginId"));
 			
-			if(memberMap.get("loginId") == request.getParameter("loginId")) {
-				response.getWriter().append(String.format("%s님은 로그인 되었습니다.", request.getParameter("loginId")));
-			}
-			
-				 session.setAttribute("loginId", request.getParameter("loginId"));
-				 session.setAttribute("loginPw", request.getParameter("loginPW"));
-			
-			// request에 있는 session을 꺼내오고 -> session에서 setAttribute를 하고
-			// 꺼낼 때는 getAttribute를 하면된다.
-			
-//			for(String key : memberMap) {
-//				if(member == null) {
-//					response.getWriter().append(String.format(LEGACY_DO_HEAD, null));
-//				}
-//			}
-			
-			
+			response.getWriter().append(String.format("<script>alert('%s님 환영합니다~'); location.replace('../home/main');</script>", loginId));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -78,6 +69,7 @@ public class MemberDoLoginServlet extends HttpServlet {
 			}
 		}
 	}
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);

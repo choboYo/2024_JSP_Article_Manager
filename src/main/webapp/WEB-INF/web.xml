@@ -119,4 +119,14 @@
     <servlet-name>MemberLogin</servlet-name>
     <url-pattern>/MemberLogin</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MemberLogoutServlet</display-name>
+    <servlet-name>MemberLogoutServlet</servlet-name>
+    <servlet-class>com.koreaIT.jsp.am.MemberLogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberLogoutServlet</servlet-name>
+    <url-pattern>/MemberLogoutServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
