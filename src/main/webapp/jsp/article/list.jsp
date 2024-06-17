@@ -9,6 +9,7 @@
 	int cPage = (int) request.getAttribute("cPage");
 	int from = (int) request.getAttribute("from");
 	int end = (int) request.getAttribute("end");
+	int loginedMemberId = (int) request.getAttribute("loginedMemberId");
 %>
 
 <!DOCTYPE html>
@@ -22,9 +23,32 @@
 		<div><a href="<%= request.getContextPath() %>/home/main">메인</a></div>
 	</div>
 	
-	<div>
-		<a href="write">글쓰기</a>
-	</div>
+	<%
+	if (loginedMemberId == -1) {
+	%>
+
+	<div><a href="../member/join">회원가입</a></div>
+	<div><a href="../member/login">로그인</a></div>
+	<%
+	}
+	%>
+	<%
+	if (loginedMemberId != -1) {
+	%>
+		<div><a href="../member/logout">로그아웃</a></div>
+	<%
+	}
+	%>
+	
+	<%
+	if (loginedMemberId != -1) {
+	%>
+		<div>
+			<a href="write">글쓰기</a>
+		</div>
+	<%
+	}
+	%>
 	
 	<table border=1>
 		<colgroup>
@@ -36,6 +60,7 @@
 			<th>번호</th>
 			<th>작성일</th>
 			<th>제목</th>
+			<th>작성자</th>
 		</tr>
 		<% 
 		for (Map<String, Object> articleMap : articleListMap) {
@@ -44,6 +69,7 @@
 				<td><%= articleMap.get("id") %></td>
 				<td><%= articleMap.get("updateDate") %></td>
 				<td><a href="detail?id=<%= articleMap.get("id") %>"><%= articleMap.get("title") %></a></td>
+				<td><%= articleMap.get("writerName") %></td>
 			</tr>
 		<%
 		}
