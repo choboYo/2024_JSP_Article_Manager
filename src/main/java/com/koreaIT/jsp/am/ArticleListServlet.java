@@ -68,6 +68,7 @@ public class ArticleListServlet extends HttpServlet {
 				loginedMemberId = (int) session.getAttribute("loginedMemberId");
 			}
 			
+			request.setAttribute("loginedMemberLoginId", session.getAttribute("loginedMemberLoginId"));
 			request.setAttribute("loginedMemberId", loginedMemberId);
 			request.setAttribute("cPage", cPage);
 			request.setAttribute("from", from);

@@ -9,7 +9,6 @@
 	int cPage = (int) request.getAttribute("cPage");
 	int from = (int) request.getAttribute("from");
 	int end = (int) request.getAttribute("end");
-	int loginedMemberId = (int) request.getAttribute("loginedMemberId");
 %>
 
 <!DOCTYPE html>
@@ -19,26 +18,10 @@
 <title>게시물 리스트</title>
 </head>
 <body>
+	<%@ include file="/jsp/common/topBar.jsp"%>
 	<div>
 		<div><a href="<%= request.getContextPath() %>/home/main">메인</a></div>
 	</div>
-	
-	<%
-	if (loginedMemberId == -1) {
-	%>
-
-	<div><a href="../member/join">회원가입</a></div>
-	<div><a href="../member/login">로그인</a></div>
-	<%
-	}
-	%>
-	<%
-	if (loginedMemberId != -1) {
-	%>
-		<div><a href="../member/logout">로그아웃</a></div>
-	<%
-	}
-	%>
 	
 	<%
 	if (loginedMemberId != -1) {
